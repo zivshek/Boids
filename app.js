@@ -1,23 +1,20 @@
 
 let boids = function (p) {
 
+    let canvasW = 800;
+    let canvasH = 600;
+
+    let marginX = 50;
+    let marginY = 60;
+
     p.setup = function() {
-        p.createCanvas(800, 600, p.WEBGL);
-        p.noStroke();
-        p.fill(50);
-        p.push();
-        p.translate(-275, 175);
-        p.rotateY(1.25);
-        p.rotateX(-0.9);
-        p.box(100);
-        p.pop();
-        p.noFill();
-        p.stroke(255);
-        p.push();
-        p.translate(500, 600*0.35, -200);
-        p.sphere(300);
-        p.pop();
-    }
+        
+        p.createCanvas(canvasW, canvasH);
+    };
+
+    p.draw = function() {
+        p.background(200);
+    };
 };
 
-let boidsp5 = new p5(boids, window.document.getElementById('container'));
+let boidsp5 = new p5(boids, window.document.getElementById('boids'));
