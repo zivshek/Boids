@@ -4,8 +4,9 @@ let boids = function (p) {
     let canvasW = 800;
     let canvasH = 600;
 
-    let marginX = 50;
-    let marginY = 60;
+    let marginXL = 150;
+    let marginXR = 50;
+    let marginY = 50;
 
     p.setup = function() {
         
