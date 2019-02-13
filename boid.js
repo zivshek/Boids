@@ -2,6 +2,8 @@ class Boid {
 
     constructor(p5){
         this.p5 = p5;
+
+        this.acc = 0;
     }
 
     draw(color){
