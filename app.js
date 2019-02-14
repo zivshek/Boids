@@ -13,10 +13,10 @@ let boids = function (p) {
     let gameCanvasW = canvasW - marginXL - marginXR;
     let gameCanvasH = canvasH - 2 * marginY;
 
-    let boids;
+    let boids = [];
     let totalBoids = 100;
 
-    let boidsColorPicker, bkgColorPicker;
+    let boidsColorPicker, bkgColorPicker, clearButton, spawnButton;
     let spacing = 5;
 
     let boidsColor = p.color('black');
@@ -33,8 +33,17 @@ let boids = function (p) {
         bkgColorPicker = p.createColorPicker(bkgColor);
         bkgColorPicker.position(marginXR, marginY + bkgColorPicker.height / 2 + spacing + boidsColorPicker.height);
         bkgColorPicker.input(p.setBkgColor);
+
+        clearButton = p.createButton('Clear');
+        clearButton.position(marginXR, marginY + bkgColorPicker.height + spacing * 10 + boidsColorPicker.height);
+        clearButton.mousePressed(p.clear);
+
+        spawnButton = p.createButton('Spawn');
+        spawnButton.position(marginXR, marginY + bkgColorPicker.height + spacing * 20 + boidsColorPicker.height);
+        spawnButton.mousePressed(p.spawn);
+
         p.textSize(15);
-        boids = Array(100).fill().map(x => new Boid(p, gameCanvasX, gameCanvasY));
+        p.spawn();
     };
 
     p.draw = function() {
@@ -47,6 +56,15 @@ let boids = function (p) {
 
     p.mouseHandler = function() {
 
+    };
+
+    p.clear = function() {
+        boids = [];
+    };
+
+    p.spawn = function() {
+        let temp = Array(100).fill().map(x => new Boid(p, gameCanvasX, gameCanvasY));
+        boids.concat(temp);
     };
 
     p.setBoidsColor = function() {
