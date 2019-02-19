@@ -9,15 +9,16 @@ class Boid {
         let angle = this.p5.random(Math.PI * 2);
         this.velocity = this.p5.createVector(Math.cos(angle), Math.sin(angle));
         this.acceleration = this.p5.createVector(0, 0);
+        this.perceiveRadius = 0;
     }
 
     sim(flock, color, boundaries) {
-        this.update();
+        this.move();
         this.boundaryCheck(boundaries);
         this.draw(color);
     }
 
-    update() {
+    move() {
         this.velocity.add(this.acceleration);
         this.velocity.limit(this.maxSpeed);
         this.pos.add(this.velocity);
@@ -28,7 +29,19 @@ class Boid {
 
     }
 
-    avoid() {
+    avoidance() {
+
+    }
+
+    seperation() {
+
+    }
+
+    alignment() {
+
+    }
+
+    cohesion() {
 
     }
 
