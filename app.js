@@ -49,7 +49,7 @@ let boids = function (p) {
         spawnButton.mousePressed(p.spawn);
 
         p.textSize(15);
-        p.spawn();
+        //p.spawn();
     };
 
     p.draw = function() {
@@ -80,9 +80,13 @@ let boids = function (p) {
             return;
         }
         // trying some ES6 features
-        let temp = Array(50).fill().map(x => new Boid(p, gameCanvasX, gameCanvasY));
+        let temp = Array(50).fill().map(x => new Boid(p, p.myRandom(boundaries.lx, boundaries.rx), p.myRandom(boundaries.ty, boundaries.by)));
         flock = flock.concat(temp);
     };
+
+    p.myRandom = function(min, max) {
+        return Math.random() * (max - min + 1) + min;
+    }
 
     p.setBoidsColor = function() {
         boidsColor = boidsColorPicker.color();
